@@ -1,4 +1,34 @@
 /* Same app, same customer, successive stages; analytics is intentionally untouched. */
+.hero-case--context .helpdesk-mockup__detail { position: relative; isolation: isolate; }
+.hero-case--context .helpdesk-mockup__rail,
+.hero-case--context .helpdesk-mockup > div > header,
+.hero-case--context .helpdesk-mockup__ticket-list,
+.hero-case--context .helpdesk-mockup__chat {
+  filter: blur(3px);
+  opacity: .48;
+  pointer-events: none;
+  user-select: none;
+}
+.hero-case--context .helpdesk-mockup__detail::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: #e9edf52e;
+  pointer-events: none;
+}
+.hero-case--context .case-sidebar {
+  position: absolute;
+  z-index: 2;
+  right: 28px;
+  top: 18px;
+  bottom: 24px;
+  width: min(400px, 48%);
+  border: 1px solid #b8c7e9;
+  border-radius: 18px;
+  outline: 3px solid #ffffffb3;
+  box-shadow: 0 26px 60px -12px #1d315a66, 0 8px 20px #25385626;
+}
 .hero-case .case-view { flex: 1; min-height: 0; overflow: hidden; }
 .hero-case .helpdesk-mockup__ticket-list { width: 240px; }
 .hero-case .helpdesk-mockup__ticket-list > div:last-child { display: flex; flex-direction: column; gap: 5px; }
@@ -75,6 +105,18 @@
   .hero-case .helpdesk-mockup__ticket-list { display: none; }
 }
 @media (max-width: 640px) {
+  .hero-case--context .helpdesk-mockup__detail { display: flex !important; }
+  .hero-case--context .case-sidebar { inset: 82px 14px 20px; width: auto; border-radius: 14px; }
+  .hero-case--context .case-sidebar .case-person { display: flex; padding: 12px; }
+  .hero-case--context #case-panel-pedidos .case-fields > div:not(:last-child) { display: flex; }
+  .hero-case--context #case-panel-pedidos .case-linked { display: block; }
+  .hero-case--context .case-side-content { padding: 14px; }
+  .hero-case--context .case-order-heading > strong { font-size: 14px; }
+  .hero-case--context .case-order-product strong { font-size: 12px; }
+  .hero-case--context .case-order-product img { width: 56px; height: 48px; }
+  .hero-case--context .case-fields > div { font-size: 11px; padding: 8px 0; }
+  .hero-case--context .case-linked > p { font-size: 12px; }
+  .hero-case--context .helpdesk-mockup__chat { filter: blur(2px); }
   .hero-case .helpdesk-mockup__detail { display: grid; grid-template-rows: minmax(0, 1fr) 280px; gap: 8px; }
   .hero-case .helpdesk-mockup__chat { min-height: 0; }
   .hero-case .helpdesk-mockup__chat > header { padding: 8px; }
