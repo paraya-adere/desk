@@ -13,7 +13,8 @@
 .desk-orbit-signal { opacity: 0; }
 .desk-orbit-node { position: absolute; left: var(--node-x); top: var(--node-y); transform: translate(-50%,-50%); display: grid; place-items: center; width: clamp(44px,6.4vw,64px); height: clamp(44px,6.4vw,64px); border: 1px solid #ffffff1f; border-radius: 16px; padding: 0; background: #121214; cursor: pointer; color: #d4d6df; z-index: 2; transition: border-color .2s, background .2s, box-shadow .2s; }
 .desk-orbit-node img { display: block; width: 53%; height: 53%; object-fit: contain; filter: brightness(0) invert(1); opacity: .75; transition: opacity .2s; }
-.desk-orbit-node > span { position: absolute; top: calc(100% + 5px); left: 50%; transform: translateX(-50%); font-family: inherit; color: #888d9c; font-size: 10px; line-height: 1.2; white-space: nowrap; pointer-events: none; }
+.desk-orbit-node > span { position: absolute; top: 50%; left: calc(100% + 12px); transform: translateY(-50%); padding: 3px 6px; border-radius: 4px; background: #0d0e11e6; font-family: inherit; color: #bdc3d0; font-size: 13px; line-height: 1.35; white-space: nowrap; pointer-events: none; }
+.desk-orbit-node[data-side="right"] > span { left: auto; right: calc(100% + 12px); }
 .desk-orbit-node:is(:hover,:focus-visible,.is-highlighted) { border-color: #5486db; background: #171c29; box-shadow: 0 0 22px #2162b81f; }
 .desk-orbit-node:is(:hover,:focus-visible,.is-highlighted) img { opacity: 1; }
 .desk-orbit-node:focus-visible { outline: 2px solid #ffdc48; outline-offset: 4px; }
@@ -23,7 +24,7 @@
 .desk-orbit-center > span { display: block; position: absolute; width: 100%; top: calc(100% + 10px); color: #e6e9f2; font-size: 22px; font-weight: 500; letter-spacing: -.025em; }
 .desk-orbit-side { position: absolute; top: 1%; transform: translateX(-50%); color: #767c8b; font-size: 10px; letter-spacing: .12em; white-space: nowrap; }
 .desk-orbit-side-left { left: 12%; } .desk-orbit-side-right { left: 88%; }
-.desk-orbit-detail { position: absolute; top: calc(50% + 108px); left: 50%; transform: translateX(-50%); width: min(300px,55%); text-align: center; pointer-events: none; }
+.desk-orbit-detail { position: absolute; top: calc(50% + 108px); left: 50%; transform: translateX(-50%); width: min(280px,28%); text-align: center; pointer-events: none; }
 .desk-orbit-detail strong { display: block; color: #c8d4ed; font-size: 14px; font-weight: 500; }
 .desk-orbit-detail p { margin-top: 7px; color: #8c98b1; font-size: 12px; line-height: 1.6; }
 .desk-integrations-extra { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; margin: 20px 0 0; color: #808695; font-size: 12px; }
