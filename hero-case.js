@@ -52,44 +52,25 @@
         : '<div class="case-context-event">Pedido #1086 vinculado a esta conversación · Shopify</div>');
     chat.querySelector('.home-desk-messages').replaceWith(conversation);
     chat.querySelector('footer').innerHTML = `<div class="case-composer-status">${handoff ? 'Pedro L. · Postventa' : 'Agente IA · consultando el pedido'}</div><div class="case-composer">${handoff ? 'Escribe un mensaje…' : 'El agente IA está atendiendo esta conversación'}<span aria-hidden="true">↗</span></div>`;
-    const sidebar = document.createElement('aside');
+    const sidebar = document.createElement(handoff ? 'aside' : 'div');
     sidebar.className = 'case-sidebar';
     sidebar.setAttribute('aria-label', handoff ? 'Derivación al equipo con contexto' : 'Contexto del cliente y sus pedidos');
     if (!handoff) {
-      sidebar.innerHTML = `${customer}
-        <div class="case-side-tabs" role="tablist" aria-label="Contexto de Fernando">
-          <button id="case-tab-cliente" type="button" role="tab" aria-controls="case-panel-cliente" aria-selected="false" tabindex="-1">Cliente</button>
-          <button id="case-tab-pedidos" type="button" role="tab" aria-controls="case-panel-pedidos" aria-selected="true" tabindex="0">Pedidos <span>6</span></button>
-        </div>
-        <div id="case-panel-cliente" class="case-side-content" role="tabpanel" aria-labelledby="case-tab-cliente" tabindex="0" hidden>
-          <h3>Datos del cliente</h3>
+      sidebar.className = 'case-context-cards';
+      sidebar.innerHTML = `<aside class="case-sidebar case-customer-card" aria-labelledby="case-customer-title">${customer}
+        <div class="case-side-content">
+          <h3 id="case-customer-title">Datos del cliente</h3>
           <dl class="case-fields case-profile-fields"><div><dt>Nombre</dt><dd>Fernando Rojas</dd></div><div><dt>Email</dt><dd>fernando.rojas@gmail.com</dd></div><div><dt>Teléfono</dt><dd>+56 9 7841 2396</dd></div><div><dt>Tipo de cliente</dt><dd>Cliente recurrente</dd></div></dl>
           <div class="case-linked"><strong>Historial conectado</strong><p>Compra de la cafetera por WhatsApp, pedido #1086 y 5 compras anteriores en Aura Store.</p></div>
           <div class="case-source">Shopify · Datos sincronizados</div>
-        </div>
-        <div id="case-panel-pedidos" class="case-side-content" role="tabpanel" aria-labelledby="case-tab-pedidos" tabindex="0">
+        </div></aside>
+        <aside class="case-sidebar case-order-card" aria-labelledby="case-order-title">
+        <header class="case-order-card-header"><h3 id="case-order-title">Detalle del pedido</h3><span>Vinculado a Fernando Rojas</span></header>
+        <div class="case-side-content">
           <div class="case-source">Shopify · Aura Store</div>${order}
           <div class="case-linked"><strong>Solicitud actual</strong><p>Cambiar la dirección antes del despacho.</p></div>
           <div class="case-previous"><span>Pedido anterior · #1042</span><strong>Cápsulas Intensidad Fuerte</strong><span>Entregado · $12.990</span></div>
-        </div>`;
-      const buttons = [...sidebar.querySelectorAll('[role="tab"]')];
-      const select = button => {
-        buttons.forEach(item => {
-          const active = item === button;
-          item.setAttribute('aria-selected', String(active));
-          item.tabIndex = active ? 0 : -1;
-          sidebar.querySelector('#' + item.getAttribute('aria-controls')).hidden = !active;
-        });
-      };
-      buttons.forEach((button, index) => {
-        button.addEventListener('click', () => select(button));
-        button.addEventListener('keydown', event => {
-          if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
-          event.preventDefault();
-          const next = event.key === 'Home' ? buttons[0] : event.key === 'End' ? buttons[1] : buttons[1 - index];
-          select(next); next.focus();
-        });
-      });
+        </div></aside>`;
     } else {
       sidebar.innerHTML = `${customer}<div class="case-side-content">
         <h3>Derivación con contexto</h3>

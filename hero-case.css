@@ -52,18 +52,27 @@
   background: #e9edf52e;
   pointer-events: none;
 }
-.hero-case--context .case-sidebar {
+.hero-case--context .case-context-cards {
   position: absolute;
   z-index: 2;
-  right: 28px;
-  top: 18px;
-  bottom: 24px;
-  width: min(400px, 48%);
+  inset: 18px 28px 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  max-width: 880px;
+  margin-inline: auto;
+}
+.hero-case--context .case-sidebar {
+  width: 100%;
+  min-width: 0;
   border: 1px solid #b8c7e9;
   border-radius: 18px;
   outline: 3px solid #ffffffb3;
   box-shadow: 0 26px 60px -12px #1d315a66, 0 8px 20px #25385626;
 }
+.case-order-card-header { display: flex; flex-direction: column; justify-content: center; min-height: 69px; padding: 16px; border-bottom: 1px solid #e2e9f2; background: #f8faff; }
+.case-order-card-header h3 { font-size: 13px; font-weight: 600; margin: 0; }
+.case-order-card-header > span { font-size: 10px; color: #71839c; margin-top: 3px; }
 .hero-case .case-view { flex: 1; min-height: 0; overflow: hidden; }
 .hero-case .helpdesk-mockup__ticket-list { width: 240px; }
 .hero-case .helpdesk-mockup__ticket-list > div:last-child { display: flex; flex-direction: column; gap: 5px; }
@@ -141,16 +150,19 @@
 }
 @media (max-width: 640px) {
   .hero-case--context .helpdesk-mockup__detail { display: flex !important; }
-  .hero-case--context .case-sidebar { inset: 82px 14px 20px; width: auto; border-radius: 14px; }
-  .hero-case--context .case-sidebar .case-person { display: flex; padding: 12px; }
-  .hero-case--context #case-panel-pedidos .case-fields > div:not(:last-child) { display: flex; }
-  .hero-case--context #case-panel-pedidos .case-linked { display: block; }
-  .hero-case--context .case-side-content { padding: 14px; }
-  .hero-case--context .case-order-heading > strong { font-size: 14px; }
-  .hero-case--context .case-order-product strong { font-size: 12px; }
-  .hero-case--context .case-order-product img { width: 56px; height: 48px; }
-  .hero-case--context .case-fields > div { font-size: 11px; padding: 8px 0; }
-  .hero-case--context .case-linked > p { font-size: 12px; }
+  .hero-case--context .case-context-cards { inset: 10px; grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, .9fr) minmax(0, 1.1fr); gap: 12px; }
+  .hero-case--context .case-sidebar { border-radius: 12px; outline-width: 2px; box-shadow: 0 12px 24px -8px #1d315a55, 0 3px 10px #25385620; }
+  .hero-case--context .case-sidebar .case-person { display: flex; padding: 8px 12px; }
+  .hero-case--context .case-avatar { width: 28px; height: 28px; }
+  .hero-case--context .case-side-content { padding: 8px 12px; }
+  .hero-case--context .case-order-card-header { min-height: 44px; padding: 7px 12px; }
+  .hero-case--context .case-customer-card .case-profile-fields > div:first-child { display: none; }
+  .hero-case--context .case-customer-card .case-profile-fields > div:nth-child(2) { grid-column: 1 / -1; }
+  .hero-case--context .case-customer-card .case-source { margin: 4px 0 0; }
+  .hero-case--context .case-side-content h3 { margin-bottom: 2px; }
+  .hero-case--context .case-fields { margin: 4px 0; }
+  .hero-case--context .case-fields > div { padding: 3px 0; }
+  .hero-case--context .case-order-product { padding: 6px; }
   .hero-case--context .helpdesk-mockup__chat { filter: blur(2px); }
   .hero-case .helpdesk-mockup__detail { display: grid; grid-template-rows: minmax(0, 1fr) 280px; gap: 8px; }
   .hero-case .helpdesk-mockup__chat { min-height: 0; }
