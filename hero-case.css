@@ -1,4 +1,39 @@
 /* Same app, same customer, successive stages; analytics is intentionally untouched. */
+/* In the handoff view, both the conversation and its routing context stay in focus. */
+.hero-case--handoff .helpdesk-mockup__detail { position: relative; isolation: isolate; }
+.hero-case--handoff .helpdesk-mockup__rail,
+.hero-case--handoff .helpdesk-mockup > div > header,
+.hero-case--handoff .helpdesk-mockup__ticket-list {
+  filter: blur(3px);
+  opacity: .48;
+  pointer-events: none;
+  user-select: none;
+}
+.hero-case--handoff .helpdesk-mockup__detail::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: #e9edf52e;
+  pointer-events: none;
+}
+.hero-case--handoff .helpdesk-mockup__chat,
+.hero-case--handoff .case-sidebar {
+  position: relative;
+  z-index: 2;
+  border-color: #b8c7e9;
+  border-radius: 18px;
+  outline: 3px solid #ffffffb3;
+  box-shadow: 0 26px 60px -12px #1d315a66, 0 8px 20px #25385626;
+}
+@media (max-width: 640px) {
+  .hero-case--handoff .helpdesk-mockup__chat,
+  .hero-case--handoff .case-sidebar {
+    border-radius: 12px;
+    outline-width: 2px;
+    box-shadow: 0 12px 24px -8px #1d315a55, 0 3px 10px #25385620;
+  }
+}
 .hero-case--context .helpdesk-mockup__detail { position: relative; isolation: isolate; }
 .hero-case--context .helpdesk-mockup__rail,
 .hero-case--context .helpdesk-mockup > div > header,
