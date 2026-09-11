@@ -1816,55 +1816,68 @@
     padding: 0 !important;
     overflow: hidden;
     border: 0;
-    border-radius: 16px;
-    background: #0c0c0d !important;
+    border-radius: calc(16px * var(--mockup-scale, 1));
+    background: transparent !important;
     box-shadow: none;
     min-width: 0;
     position: relative;
   }
 
-  .animated-mockup-host iframe {
+  .animated-mockup-host iframe,
+  .animated-mockup-host .animated-mockup-poster {
     display: block;
     position: absolute;
     inset: 0 auto auto 0;
     width: 585px;
+    height: var(--mockup-canvas-height);
     max-width: none;
     border: 0;
-    background: #0c0c0d;
-    transform: scale(var(--mockup-scale, 1));
+    background: transparent;
+    transform: scale(var(--mockup-scale, 1)) translateY(calc(-1 * var(--mockup-crop-top)));
     transform-origin: top left;
-    opacity: 0;
     transition: opacity 280ms ease;
   }
 
   .animated-mockup-poster {
-    display: block;
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    object-fit: fill;
     z-index: 1;
     opacity: 1;
     transition: opacity 280ms ease;
   }
 
-  .animated-mockup-host iframe { z-index: 0; }
+  .animated-mockup-host iframe { z-index: 0; opacity: 0; }
   .animated-mockup-host.is-playing iframe { opacity: 1; }
   .animated-mockup-host.is-playing .animated-mockup-poster {
     opacity: 0;
     pointer-events: none;
   }
 
-  .animated-mockup-host--inbox iframe,
-  .animated-mockup-host--analytics iframe { height: 620px; }
-  .animated-mockup-host--handoff iframe { height: 573px; }
-  .animated-mockup-host--operations iframe { height: 660px; }
+  /* Keep the authored canvas intact and expose only the blue card bounds.
+     The poster uses the identical transform, so playback never changes size. */
+  .animated-mockup-host--inbox {
+    --mockup-canvas-height: 620px;
+    --mockup-crop-top: 26.53125px;
+    --mockup-content-height: 566.9375;
+  }
+  .animated-mockup-host--handoff {
+    --mockup-canvas-height: 573px;
+    --mockup-crop-top: 0px;
+    --mockup-content-height: 573;
+  }
+  .animated-mockup-host--operations {
+    --mockup-canvas-height: 660px;
+    --mockup-crop-top: 57.015625px;
+    --mockup-content-height: 545.96875;
+  }
+  .animated-mockup-host--analytics {
+    --mockup-canvas-height: 620px;
+    --mockup-crop-top: 40px;
+    --mockup-content-height: 573.96875;
+  }
 
   @media (max-width: 640px) {
     .animated-mockup-host {
       max-width: 450px;
-      border-radius: 13px;
     }
   }
 
@@ -1947,7 +1960,7 @@ homeDesk.addEventListener('click', event => {
   const hosts = [...document.querySelectorAll('.animated-mockup-host')];
   const resizeHost = host => {
     const nativeWidth = Number(host.dataset.mockupWidth);
-    const nativeHeight = Number(host.dataset.mockupHeight);
+    const nativeHeight = parseFloat(getComputedStyle(host).getPropertyValue('--mockup-content-height')) || Number(host.dataset.mockupHeight);
     const scale = Math.min(1, host.getBoundingClientRect().width / nativeWidth);
     host.style.setProperty('--mockup-scale', String(scale));
     host.style.height = (nativeHeight * scale) + 'px';
