@@ -1920,7 +1920,9 @@
   }
 </style>
 <link rel="stylesheet" href="./hero-tabs.css?v=top-tabs-1">
+<link rel="stylesheet" href="./hero-case.css?v=1">
 <script src="./inbox-fit.js" defer></script>
+<script src="./hero-case.js?v=1" defer></script>
 </head>
 <body>
 <!-- V2 local independiente. Fuente editorial: adereso-desk-wireframe.html, 24 agosto 2026.
@@ -1961,7 +1963,7 @@ const panels = [...document.querySelectorAll('.hero-mockup')];
 const viewLabels = ['Bandeja de entrada', 'Contexto del cliente', 'IA + atención humana', 'Analítica'];
 function selectTab(tab) {
   const product = document.querySelector('.hero-product');
-  product.classList.toggle('is-home-inbox', tab.id === 'tab-inbox');
+  product.classList.toggle('is-home-inbox', tab.id !== 'tab-analitica');
   product.classList.toggle('is-monitor', tab.id === 'tab-analitica');
   product.dataset.heroTheme = tab.id === 'tab-analitica' ? 'dark' : 'light';
   tabs.forEach(item => { const selected = item === tab; item.setAttribute('aria-selected', String(selected)); item.tabIndex = selected ? 0 : -1; });
