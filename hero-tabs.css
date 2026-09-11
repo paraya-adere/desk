@@ -1,30 +1,29 @@
 /* Hero tabs only: the platform animations keep their approved treatment. */
-/* Let the inbox determine its height: scrolling belongs to the landing page. */
-.hero-product.is-home-inbox > .product-body,
-.hero-product.is-home-inbox #mockup-inbox,
-.hero-product.is-home-inbox .home-desk { height: auto; }
-.home-desk .helpdesk-mockup { height: auto !important; min-height: var(--desk-stage-height); }
-.home-desk #home-desk-view { overflow: visible; }
-.home-desk .helpdesk-mockup__detail { height: auto; min-height: calc(var(--desk-stage-height) - 48px); }
+/* Keep the original stage height and fit each column's content inside it. */
+.home-desk #home-desk-view { overflow: hidden; }
 .home-desk .home-desk-messages,
 .home-desk .helpdesk-mockup__ticket-list > div:last-child,
 .home-desk .helpdesk-mockup__profile > div:last-child {
-  height: auto;
-  max-height: none;
-  overflow: visible;
-  flex: 0 0 auto;
+  min-height: 0;
+  overflow: hidden;
+  flex: 1 1 0%;
 }
 .home-desk .helpdesk-mockup__chat > footer { margin-top: auto; }
+.home-desk .helpdesk-ticket-card { padding: 9px 10px; }
+.home-desk .helpdesk-ticket-card__header { margin-bottom: 7px; }
+.home-desk .helpdesk-ticket-card__preview { margin-bottom: 7px; font-size: 11px; line-height: 1.45; }
+.home-desk .home-desk-messages { gap: 7px; padding: 10px 12px; }
+.home-desk .home-desk-messages > div > div:first-child { font-size: 11px; padding: 7px 10px; }
+.home-desk img[data-desk-product] { height: 70px; }
+.home-desk .helpdesk-mockup__chat > footer { padding: 8px 10px; }
+.home-desk .helpdesk-mockup__chat > footer > div:last-child > div:first-child { padding: 9px 12px; }
 .home-desk #home-desk-view > [role="region"] {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  height: auto;
-  overflow: visible;
+  height: 100%;
+  overflow: hidden;
 }
-.home-desk #home-desk-view > [role="region"] > div { width: auto; min-width: 0; }
-@media (max-width: 640px) {
-  .home-desk #home-desk-view > [role="region"] { grid-template-columns: 1fr; }
-}
+.home-desk #home-desk-view > [role="region"] > div { width: auto; min-width: 0; min-height: 0; }
 .hero-product[data-hero-theme="light"] {
   --line: #dce4ef;
   --muted: #697a91;
