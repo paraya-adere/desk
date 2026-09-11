@@ -1,9 +1,11 @@
 /* Hero tabs only: the platform animations keep their approved treatment. */
-/* A compact navigation row beneath the full-size product preview. */
+/* Put compact navigation before the full-size product preview. */
+.hero #canales { margin-top: 48px; }
+.hero #canales + .desk-mockup-stage { margin-top: 24px; }
 #canales .value-row {
   max-width: 920px;
   margin-inline: auto;
-  padding: 12px 0 32px;
+  padding: 0;
   gap: 16px;
 }
 #canales .value-tab {
@@ -22,7 +24,9 @@
 #canales .value-tab:hover { border-bottom-color: #c9b868; }
 #canales .value-tab:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; border-radius: 4px; }
 @media (max-width: 640px) {
-  #canales .value-row { gap: 8px 12px; padding: 8px 0 24px; }
+  .hero #canales { margin-top: 32px; }
+  .hero #canales + .desk-mockup-stage { margin-top: 20px; }
+  #canales .value-row { gap: 8px 12px; padding: 0; }
   #canales .value-tab { justify-content: flex-start; gap: 8px; padding: 12px 4px; }
   #canales .value-tab strong { font-size: 14px; }
 }
