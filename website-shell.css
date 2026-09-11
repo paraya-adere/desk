@@ -37,6 +37,21 @@
 .site-header .menu-button { border-radius: 50%; }
 .skip-link { z-index: 110; }
 
+/* Same 18 original brand assets and optical sizes as the website home. */
+.clients .logo-row { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 36px 32px; align-items: center; }
+.clients .client-logo { width: 100%; height: 36px; max-width: 136px; margin: auto; filter: grayscale(1) brightness(0) invert(1); opacity: .7; }
+.clients .client-logo--native { filter: none; }
+.clients .client-logo--large { height: 52px; max-width: 152px; }
+.clients .client-logo:hover { opacity: .95; }
+@media (max-width: 860px) {
+  .clients .logo-row { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 24px; }
+}
+@media (max-width: 640px) {
+  .clients .logo-row { gap: 26px 20px; }
+  .clients .client-logo { height: 28px; max-width: 110px; }
+  .clients .client-logo--large { height: 40px; }
+}
+
 /* Home FAQ: centered heading, separate cards, plus/minus indicators. */
 .faq-section { border-top: 0; padding: 80px 0; background: #0c0c0d; }
 .faq-section .faq-layout { display: block; width: min(calc(100% - 48px), 1152px); }
