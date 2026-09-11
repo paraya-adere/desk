@@ -60,7 +60,7 @@
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 24px;
   max-width: 880px;
-  margin-inline: auto;
+  margin-inline: auto 0;
 }
 .hero-case--context .case-sidebar {
   width: 100%;
