@@ -1,25 +1,30 @@
 /* Hero tabs only: the platform animations keep their approved treatment. */
-/* Reserve one viewport for the product preview and its tab controls. */
-.hero .desk-mockup-stage {
-  height: var(--hero-preview-height, auto);
-  padding-top: calc(12px * var(--hero-preview-scale, 1));
-  padding-bottom: 0;
-}
-.hero .desk-mockup-frame {
-  transform: scale(var(--hero-preview-scale, 1));
-  transform-origin: top center;
-}
+/* A compact navigation row beneath the full-size product preview. */
 #canales .value-row {
-  max-width: 1000px;
+  max-width: 920px;
   margin-inline: auto;
-  padding-top: 18px;
-  padding-bottom: 16px;
+  padding: 12px 0 32px;
+  gap: 16px;
 }
-#canales .value-tab { padding-top: 12px; }
+#canales .value-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 8px;
+  border-top: 0;
+  border-bottom: 2px solid #ffffff1a;
+}
+#canales .value-tab strong { font-size: 15px; line-height: 1.4; }
+#canales .value-tab > svg { flex: 0 0 20px; margin: 0; }
+#canales .value-tab[aria-selected="true"] { border-bottom-color: var(--yellow); }
+#canales .value-tab:hover { border-bottom-color: #c9b868; }
+#canales .value-tab:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; border-radius: 4px; }
 @media (max-width: 640px) {
-  #canales .value-row { gap: 10px 16px; padding-top: 14px; padding-bottom: 12px; }
-  #canales .value-tab { grid-template-columns: 18px 1fr; gap: 7px; padding-top: 10px; }
-  #canales .value-tab p { display: none; }
+  #canales .value-row { gap: 8px 12px; padding: 8px 0 24px; }
+  #canales .value-tab { justify-content: flex-start; gap: 8px; padding: 12px 4px; }
+  #canales .value-tab strong { font-size: 14px; }
 }
 /* Keep the original stage height and fit each column's content inside it. */
 .home-desk #home-desk-view { overflow: hidden; }
