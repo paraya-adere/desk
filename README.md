@@ -9,6 +9,7 @@ las demás permanecen pausadas y vuelven al inicio al entrar nuevamente.
 ## Archivos
 
 - `index.html`: landing principal.
+- `hero-tabs.css`: tabs del hero en light y tablero de monitoreo en dark.
 - `mockups/`: cuatro animaciones HTML con control de reproducción.
 - `posters/`: portadas estáticas de los mockups.
 
