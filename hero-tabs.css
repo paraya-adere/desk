@@ -1,4 +1,26 @@
 /* Hero tabs only: the platform animations keep their approved treatment. */
+/* Reserve one viewport for the product preview and its tab controls. */
+.hero .desk-mockup-stage {
+  height: var(--hero-preview-height, auto);
+  padding-top: calc(12px * var(--hero-preview-scale, 1));
+  padding-bottom: 0;
+}
+.hero .desk-mockup-frame {
+  transform: scale(var(--hero-preview-scale, 1));
+  transform-origin: top center;
+}
+#canales .value-row {
+  max-width: 1000px;
+  margin-inline: auto;
+  padding-top: 18px;
+  padding-bottom: 16px;
+}
+#canales .value-tab { padding-top: 12px; }
+@media (max-width: 640px) {
+  #canales .value-row { gap: 10px 16px; padding-top: 14px; padding-bottom: 12px; }
+  #canales .value-tab { grid-template-columns: 18px 1fr; gap: 7px; padding-top: 10px; }
+  #canales .value-tab p { display: none; }
+}
 /* Keep the original stage height and fit each column's content inside it. */
 .home-desk #home-desk-view { overflow: hidden; }
 .home-desk .home-desk-messages,
