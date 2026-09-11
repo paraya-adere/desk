@@ -9,7 +9,8 @@ las demás permanecen pausadas y vuelven al inicio al entrar nuevamente.
 ## Archivos
 
 - `index.html`: landing principal.
-- `hero-tabs.css`: tabs del hero en light y tablero de monitoreo en dark.
+- `hero-tabs.css`: tabs del hero y tablero de monitoreo en light.
+- `mobile-mockups.js`: conserva el mockup de escritorio a 1184 px y lo escala al ancho disponible en mobile, sin apilar columnas ni duplicar la interfaz.
 - `inbox-fit.js`: ajuste del contenido de la bandeja a su altura fija, sin scroll interno.
 - `hero-case.js` y `hero-case.css`: continuidad del caso de Fernando entre la compra, el panel lateral de cliente/pedido y la derivación de IA a Postventa.
 - `mockups/`: cuatro animaciones HTML con control de reproducción.

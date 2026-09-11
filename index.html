@@ -1923,6 +1923,7 @@
 <link rel="stylesheet" href="./hero-case.css?v=right-context-5">
 <script src="./inbox-fit.js" defer></script>
 <script src="./hero-case.js?v=dual-context-2" defer></script>
+<script src="./mobile-mockups.js?v=1" defer></script>
 </head>
 <body>
 <!-- V2 local independiente. Fuente editorial: adereso-desk-wireframe.html, 24 agosto 2026.
@@ -1961,14 +1962,15 @@
 const tabs = [...document.querySelectorAll('.value-tab')];
 const panels = [...document.querySelectorAll('.hero-mockup')];
 const viewLabels = ['Bandeja de entrada', 'Contexto del cliente', 'IA + atención humana', 'Analítica'];
+const heroProduct = document.querySelector('.hero-product');
 function selectTab(tab) {
-  const product = document.querySelector('.hero-product');
+  const product = heroProduct;
   product.classList.toggle('is-home-inbox', tab.id !== 'tab-analitica');
   product.classList.toggle('is-monitor', tab.id === 'tab-analitica');
   product.dataset.heroTheme = 'light';
   tabs.forEach(item => { const selected = item === tab; item.setAttribute('aria-selected', String(selected)); item.tabIndex = selected ? 0 : -1; });
-  panels.forEach(panel => { panel.hidden = panel.id !== tab.getAttribute('aria-controls'); });
-  document.getElementById('current-view-label').textContent = viewLabels[tabs.indexOf(tab)];
+  panels.forEach(panel => { panel.hidden = panel.id !== (tab.dataset.mockupPanel || tab.getAttribute('aria-controls')); });
+  product.querySelector('#current-view-label').textContent = viewLabels[tabs.indexOf(tab)];
 }
 tabs.forEach((tab,index) => {
   tab.addEventListener('click', () => selectTab(tab));
@@ -1990,9 +1992,10 @@ matchMedia('(min-width:861px)').addEventListener('change',event=>{if(event.match
 
 // Ticket selection and return to the board, matching the test homepage interaction.
 const homeDesk = document.querySelector('.home-desk');
+const deskTemplates = new Map([...document.querySelectorAll('template[id^="desk-template-"]')].map(template => [template.id, template]));
 function setDeskView(id) {
-  const template = document.getElementById('desk-template-' + id);
-  const view = document.getElementById('home-desk-view');
+  const template = deskTemplates.get('desk-template-' + id);
+  const view = homeDesk.querySelector('#home-desk-view');
   if (!template || !view) return;
   view.replaceChildren(template.content.cloneNode(true));
   const target = id === 'board' ? view.querySelector('[data-desk-ticket]') : view.querySelector('.helpdesk-mockup__chat h2');
