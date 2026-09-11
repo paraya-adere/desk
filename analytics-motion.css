@@ -1,0 +1,30 @@
+/* Shared live-demo choreography. Positioned inside each existing mockup. */
+.analytics-live-scene { position: relative; isolation: isolate; }
+.desk-monitor.analytics-live-scene { overflow: hidden; }
+.analytics-live-scene strong { font-variant-numeric: tabular-nums; }
+.analytics-live-notice {
+  position: absolute; z-index: 8; top: 16px; right: 18px; width: min(330px, 70%);
+  display: flex; align-items: center; gap: 12px; padding: 14px 16px;
+  background: #fff; border: 1px solid #e7ccd2; border-radius: 12px;
+  box-shadow: 0 16px 40px #24355229, 0 3px 8px #2435520d;
+  color: #2d3b54; pointer-events: none; opacity: 0; overflow: hidden;
+  transform-origin: top right; text-align: left;
+}
+.analytics-live-notice-icon { flex: 0 0 32px; height: 32px; display: grid; place-items: center; border-radius: 10px; background: #fff0ef; color: #cc4b5f; font-size: 18px; font-weight: 600; }
+.analytics-live-notice-copy { min-width: 0; }
+.analytics-live-notice-copy small { display: block; color: #8b7780; font-size: 8px; letter-spacing: .09em; margin-bottom: 4px; }
+.analytics-live-notice-copy strong { display: block; font-size: 13px; font-weight: 600; line-height: 1.35; }
+.analytics-live-notice-copy > span { display: block; color: #72819b; font-size: 10px; line-height: 1.45; margin-top: 4px; }
+.analytics-live-notice-progress { position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: #d96a79; transform-origin: left; }
+.analytics-live-notice[data-tone="success"] { border-color: #c4dfd6; }
+.analytics-live-notice[data-tone="success"] .analytics-live-notice-icon { background: #eaf6f0; color: #328467; }
+.analytics-live-notice[data-tone="success"] .analytics-live-notice-progress { background: #499d80; }
+.analytics-dashboard .analytics-live-notice { top: 9px; right: 10px; padding: 10px 12px; gap: 9px; width: min(310px, 75%); }
+@media (max-width: 600px) {
+  .analytics-dashboard .analytics-live-notice { width: 76%; top: 7px; right: 7px; border-radius: 9px; padding: 9px 10px; gap: 8px; }
+  .analytics-dashboard .analytics-live-notice-icon { flex-basis: 25px; height: 25px; font-size: 14px; border-radius: 7px; }
+  .analytics-dashboard .analytics-live-notice-copy strong { font-size: 10px; }
+  .analytics-dashboard .analytics-live-notice-copy > span { font-size: 8px; }
+  .analytics-dashboard .analytics-live-notice-copy small { font-size: 6px; }
+}
+@media (prefers-reduced-motion: reduce) { .analytics-live-notice { display: none; } }
